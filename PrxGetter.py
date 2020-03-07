@@ -118,8 +118,6 @@ def mode1():
 				if len(good_line) > 1:
 					try:
 						if len(proxy_list) == args.limit:
-							output_name = "output "+(DT.strftime("%Y-%m-%d %H%M"))+".txt"
-							CheckProxies(proxy_list,output_name)
 							break
 						else:
 							proxy_list.append(good_line[1])
@@ -134,7 +132,9 @@ def mode1():
 							sys.exit(0)
 						elif answer == "no" or answer == "n":
 							continue
-
+		if len(proxy_list)>0 :
+			output_name = "output "+(DT.strftime("%Y-%m-%d %H%M"))+".txt"
+			CheckProxies(proxy_list,output_name)
 	except r.exceptions.RequestException as e:
 		print(bad + e + "Is HTTPTunnel.ge offline?")
 	
